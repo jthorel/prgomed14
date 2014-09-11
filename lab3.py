@@ -80,6 +80,7 @@ def medelVarde(list):
 # Kollar om en lista endast är tal
 def isStrInt(lista):
 	"""
+	DOCTEST
 	>>> isStrInt("11")
 	True
 	>>> isStrInt("1a")

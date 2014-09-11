@@ -1,0 +1,11 @@
+>>> import lab1
+>>> lab1.paketPris(1)
+30
+>>> lab1.paketPris(3)
+84
+>>> lab1.paketPris(7)
+175
+>>> lab1.paketPris(10)
+250
+>>> lab1.paketPris(15)
+345
