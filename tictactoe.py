@@ -28,7 +28,7 @@ def updateGamePlan(row,col,gamePlan,sign):
 
 def anyVacantBoxes(gamePlan,EMPTY):
   for row in gamePlan: # gamePlan[0], finish game too soon, only checks first row for empty
-      if EMPTY in row: # if EMPTY in gamePlan letar bara i de "första" listan
+      if EMPTY in row: # if EMPTY in gamePlan kollar om EMPTY är lika med hela elementet
         return True
   return False
 
