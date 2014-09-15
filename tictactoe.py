@@ -72,8 +72,8 @@ def play2win(gamePlan, sign, message,EMPTY,WINROW):
   if(tictactoe_functions.lookForWinner(gamePlan,row,col,WINROW)):
     print(message)
     return True
-
-  if not anyVacantBoxes(gamePlan,EMPTY): ## Exited too soon if win on last turn
+    ## Swapped lookForWinner and anyVacantBoxes. Exited too soon if win on last turn
+  if not anyVacantBoxes(gamePlan,EMPTY): 
     print("No winner!")
     return True
 
