@@ -25,12 +25,6 @@ def showGamePlan(gamePlan):
 def updateGamePlan(row,col,gamePlan,sign):
   gamePlan[row][col] = sign
 
-def isBoxEmpty(row, col, gamePlan, EMPTY):
-  if gamePlan[row][col] == EMPTY:
-    return True
-  print("Upptagen ruta! Försök igen.")
-  return False
-
 
 def anyVacantBoxes(gamePlan,EMPTY):
   for row in gamePlan: # gamePlan[0], finish game too soon, only checks first row for empty
@@ -43,12 +37,12 @@ def humanSelectABox(sign, gamePlan, EMPTY):
   print("\n---Din tur ("+sign+")---")
   
   x=1
-  while x: ### loop and input-tests until success
+  while x: ############### loop and input-tests until success
     try:
       row = int(input("Ange raden: "))
       col = int(input("Ange kolumnen: "))
 
-      if gamePlan[row][col] == EMPTY:
+      if gamePlan[row][col] == EMPTY: ### checks if box is empty
         x=0
         return row,col
       else:
@@ -57,7 +51,7 @@ def humanSelectABox(sign, gamePlan, EMPTY):
     except ValueError:
       print("Var vänligen skriv ett nummer! Försök igen.")
     except IndexError:
-      print("Utanför spelplanen! Försök igen.") ###
+      print("Utanför spelplanen! Försök igen.") ################
 
 
 def play2win(gamePlan, sign, message,EMPTY,WINROW):
