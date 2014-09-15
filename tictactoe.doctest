@@ -1,0 +1,4 @@
+>>> import tictactoe
+>>> tictactoe.anyVacantBoxes([['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']], '-')
+True
+>>> tictactoe.updateGamePlan(1,0,[['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']], 'X')
