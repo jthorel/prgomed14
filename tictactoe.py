@@ -7,7 +7,6 @@ def createGamePlan(size, sign):
   #row = [sign]*size
   for i in range(size):
     gPlan.append([sign]*size) #gPlan.append(row) pointed all items in list to the same variable
-  print(gPlan)
   return gPlan
 
 
@@ -29,11 +28,12 @@ def updateGamePlan(row,col,gamePlan,sign):
 def isBoxEmpty(row, col, gamePlan, EMPTY):
   if gamePlan[row][col] == EMPTY:
     return True
+  print("Upptagen ruta! Försök igen.")
   return False
 
 
 def anyVacantBoxes(gamePlan,EMPTY):
-  for row in gamePlan: # gamePlan[0], finish game before, only checks first row for empty
+  for row in gamePlan: # gamePlan[0], finish game too soon, only checks first row for empty
       if EMPTY in row: # if EMPTY in gamePlan letar bara i de "första" listan
         return True
   return False
@@ -43,13 +43,17 @@ def humanSelectABox(sign, gamePlan, EMPTY):
   print("\n---Din tur ("+sign+")---")
   
   x=1
-  while x==1: ### loop and input-tests until success
+  while x: ### loop and input-tests until success
     try:
       row = int(input("Ange raden: "))
       col = int(input("Ange kolumnen: "))
-      if isBoxEmpty(row,col,gamePlan,EMPTY):
+
+      if gamePlan[row][col] == EMPTY:
         x=0
         return row,col
+      else:
+        print("Upptagen ruta! Försök igen.")
+
     except ValueError:
       print("Var vänligen skriv ett nummer! Försök igen.")
     except IndexError:
@@ -64,12 +68,15 @@ def play2win(gamePlan, sign, message,EMPTY,WINROW):
 
   updateGamePlan(row,col,gamePlan,sign)
 
-  if not anyVacantBoxes(gamePlan,EMPTY):
-    print("No winner!")
-    return True
+
   if(tictactoe_functions.lookForWinner(gamePlan,row,col,WINROW)):
     print(message)
     return True
+
+  if not anyVacantBoxes(gamePlan,EMPTY): ## Exited too soon if win on last turn
+    print("No winner!")
+    return True
+
   return False
 
 
