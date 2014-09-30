@@ -46,8 +46,9 @@ def chooseTV(tvObjects):
 			if val == 'q':
 				for i in range(len(tvObjects)):
 					tvObjects[i].save()
-				quit()
 				break
+				quit()
+				
 			else:
 				print("Skriv en siffra!")
 
@@ -67,7 +68,7 @@ def changeChannel(tvObject):
 		valc = input("Vilken kanal?: ")
 		try:
 			valc = int(valc)			
-			tvObject.channelList[valc-1]
+			tvObject.channelList[valc-1] # check if out of index
 			tvObject.chChannel(valc-1)
 			cloop = 0
 		except:
@@ -116,15 +117,16 @@ def printTV(tvObject):
 	print("Volym: " + str(tvObject.volume), '\n')
 
 
+if __name__ == '__main__':
 # Initialization
-tvObjects = []	
-tvList = loadTVs()
-createTVObjects(tvList)
+	tvObjects = []	
+	tvList = loadTVs()
+	createTVObjects(tvList)
 
 # Run main-menu
-chooseTV(tvObjects)
+	chooseTV(tvObjects)
 
 # Safe-save
-for i in range(len(tvObjects)):
-	tvObjects[i].save()
+	for i in range(len(tvObjects)):
+		tvObjects[i].save()
 
